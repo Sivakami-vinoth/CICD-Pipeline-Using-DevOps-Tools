@@ -24,44 +24,46 @@ Worker4: Docker, Kubernetes
 
 ______________________________________________________________________________________________________________________________________________________________
 
-**Step:1 Create an EC2 Instances Machine-1 manually******
+**Step:1 Create an EC2 Instances Machine-1 manually**
 
 Machine-1: OS-> ubuntu, Instance type-> t2.medium
 
 <img width="602" height="106" alt="image" src="https://github.com/user-attachments/assets/f17fc916-4db5-43fd-8b0d-f4a340f63da5" />
 
-**Connect to the instance via mobaxterm******
+**Connect to the instance via mobaxterm**
 
 <img width="602" height="258" alt="image" src="https://github.com/user-attachments/assets/cabfe2d6-c30c-4cd9-9333-4cc408a3bcd9" />
 
-**Step:2 Intsall Terrform in Machine-1******
+**Step:2 Intsall Terrform in Machine-1**
 
 Open the link -> Install | Terraform | HashiCorp Developer
 
 <img width="602" height="202" alt="image" src="https://github.com/user-attachments/assets/10780ed6-ac91-4cc1-ad76-c84ecc02ec32" />
 
-**Copy and Run the commands******
+**Copy and Run the commands**
+
+<pre> 
 
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
 sudo apt update && sudo apt install terraform
+</pre>
 
-
-Terraform Installed successfully
+**Terraform Installed successfully**
 
 <img width="407" height="53" alt="image" src="https://github.com/user-attachments/assets/dbe4417d-8276-4ff5-aaa9-4c35e522c5ac" />
 
 
-**Step:3 Create main.tf file (To create machines kubernetes master, slave1 and slave2)******
+**Step:3 Create main.tf file (To create machines kubernetes master, slave1 and slave2)**
 
 Create the access keys -> open AWS console-> IAM
 (Copy the access key and secret key)
 
 <img width="602" height="196" alt="image" src="https://github.com/user-attachments/assets/5c84a227-9c30-4801-8baa-66590a0e8e2d" />
 
-**Create main.tf file******
+**Create main.tf file**
 
 <img width="378" height="21" alt="image" src="https://github.com/user-attachments/assets/4e0a3a5d-eeb5-4229-bbe2-b201a271b4de" />
 
@@ -98,26 +100,26 @@ resource "aws_instance" "k8s-slave2" {
 }
 </pre>
 
-Run the following commands from Machine-1
+**Run the following commands from Machine-1**
 
-Run command -> terraform init
+**Run command -> terraform init**
 
 <img width="601" height="153" alt="image" src="https://github.com/user-attachments/assets/400a5354-5d06-4e9b-95f5-74ca3b3bdc81" />
 
-Run ->terraform plan
+**Run ->terraform plan**
 
  <img width="602" height="86" alt="image" src="https://github.com/user-attachments/assets/b2b2cbc0-6959-47a1-821f-48345597e1cb" />
 
  <img width="602" height="165" alt="image" src="https://github.com/user-attachments/assets/a5f6ea1b-6029-4fb5-bffe-f01ab6b13a65" />
 
- Run ->terraform apply
+** Run ->terraform apply**
  
  <img width="602" height="55" alt="image" src="https://github.com/user-attachments/assets/374a3b6d-857a-457d-a578-abace2b03780" />
 
  <img width="602" height="262" alt="image" src="https://github.com/user-attachments/assets/2b057d58-7fa8-4e50-8add-69f20ccfbdfc" />
  
 
-Machines Kubernetes master(Machine-2), slave1(Machine-3) and slave3(Machine-4) created successfully
+**Machines Kubernetes master(Machine-2), slave1(Machine-3) and slave3(Machine-4) created successfully**
 
  <img width="602" height="124" alt="image" src="https://github.com/user-attachments/assets/074f1f43-e889-4866-a7fb-8d288c5545b6" />
 
@@ -128,17 +130,19 @@ Machines Kubernetes master(Machine-2), slave1(Machine-3) and slave3(Machine-4) c
  <img width="602" height="101" alt="image" src="https://github.com/user-attachments/assets/7e77067f-af14-4724-a9eb-3063b6b239e5" />
 
 
-**Step:4 Intsall Ansible in Machine-1******
+**Step:4 Intsall Ansible in Machine-1**
 
-Open the link-> Installing Ansible on specific operating systems — Ansible Documentation
+**Open the link-> Installing Ansible on specific operating systems — Ansible Documentation**
 
-Copy the commands and run one by one
+**Copy the commands and run one by one**
 
+<pre>
 <img width="602" height="206" alt="image" src="https://github.com/user-attachments/assets/819bd068-a18d-404f-832f-6d75cbfbe54e" />
+</pre>
 
-****Generate keypair
+**Generate keypair**
 
-Run command->ssh-keygen****
+**Run command->ssh-keygen**
 
 <img width="602" height="372" alt="image" src="https://github.com/user-attachments/assets/9c785c50-2050-4e56-996e-1b112a46f106" />
 
@@ -179,12 +183,12 @@ Run command->ssh-keygen****
 
 <img width="563" height="359" alt="image" src="https://github.com/user-attachments/assets/371a8147-5f38-41d0-9a61-685e78845a94" />
 
-**
-**Step:5 Create script files to install java, docker, kubernetes and jenkins ******
 
-Create file script1.sh to install java and jenkins im Machine-1
+**Step:5 Create script files to install java, docker, kubernetes and jenkins**
 
-Open the link and copy the code->Linux (jenkins.io)**
+**Create file script1.sh to install java and jenkins im Machine-1**
+
+**Open the link and copy the code->Linux (jenkins.io)**
 
 
 
@@ -192,6 +196,8 @@ Open the link and copy the code->Linux (jenkins.io)**
 
 
 <img width="409" height="24" alt="image" src="https://github.com/user-attachments/assets/9f234462-989e-42f2-8711-5a07a74b7e0a" />
+
+<pre>
 
 sudo apt update
 
@@ -207,6 +213,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt-get update
 
 sudo apt-get install jenkins -y
+</pre>
 
 
 <img width="602" height="165" alt="image" src="https://github.com/user-attachments/assets/008931ac-ee42-4beb-b083-a949905d91a1" />
@@ -216,6 +223,8 @@ sudo apt-get install jenkins -y
 
 <img width="433" height="21" alt="image" src="https://github.com/user-attachments/assets/e3d8d457-babc-40ca-93ca-e48c65cc7276" />
 
+
+<pre> 
 sudo apt update
 
 sudo apt install openjdk-11-jdk -y
@@ -237,6 +246,7 @@ sudo swapoff -a
 sudo apt update
 
 sudo apt install -y kubelet kubeadm kubectl
+</pre>
 
 
 <img width="602" height="188" alt="image" src="https://github.com/user-attachments/assets/0b5b8a92-7d68-4ab8-bbe5-7654b8839dd0" />
@@ -246,6 +256,7 @@ sudo apt install -y kubelet kubeadm kubectl
 
 <img width="401" height="31" alt="image" src="https://github.com/user-attachments/assets/e11adeeb-51de-48f2-83fb-42edab1cb76c" />
 
+<pre> 
 sudo apt update
 
 sudo apt install docker.io -y
@@ -266,14 +277,17 @@ sudo apt update
 
 sudo apt install -y kubelet kubeadm kubectl
 
+</pre>
+
 
 <img width="602" height="143" alt="image" src="https://github.com/user-attachments/assets/052e7506-9fee-4f72-8646-8a75c76ac6be" />
 
-**Step:6 Create playbook playbook1.yaml******
+**Step:6 Create playbook playbook1.yaml**
 
 
 <img width="442" height="25" alt="image" src="https://github.com/user-attachments/assets/c4801830-1fe7-436b-bbd0-4590927d2053" />
 
+<pre> 
 ---
 - name: install Jenkins and Java on Machine-1
   become: true
@@ -294,13 +308,41 @@ sudo apt install -y kubelet kubeadm kubectl
   - name: running script3
     script: script3.sh
 
-
+</pre>
 
 <img width="601" height="277" alt="image" src="https://github.com/user-attachments/assets/3e701c29-0dc4-4343-9050-14b036f3028b" />
 
 **Run command-> ansible-playbook playbook1.yaml –syntax-check**
 
+<img width="602" height="41" alt="image" src="https://github.com/user-attachments/assets/8f4917d1-ce74-4d9c-9e6a-db1ab25ffddc" />
+
+
 **Run command-> ansible-playbook playbook1.yaml –check**
+
+<img width="602" height="340" alt="image" src="https://github.com/user-attachments/assets/c4c0fa6b-6be4-4608-8b24-7f85cd94c357" />
+
+**Run command-> ansible-playbook playbook1.yaml**
+
+<img width="602" height="335" alt="image" src="https://github.com/user-attachments/assets/14c976e2-2c70-4862-b16f-ab96cd753e27" />
+
+
+**Step:7 Initialize the kubeadm cluster in k8s-master machine**
+
+**Run command -> kubeadm init**
+
+<img width="602" height="238" alt="image" src="https://github.com/user-attachments/assets/acf888a6-de9f-4b5f-b9a4-ebc171f7eacf" />
+
+**Copy the token and run in slave machines**
+
+<img width="602" height="131" alt="image" src="https://github.com/user-attachments/assets/1a52331e-78b9-4a8a-b1dc-bbca611edec6" />
+
+ 
+**Also run the below commnds**
+
+
+
+
+
 
 
 
