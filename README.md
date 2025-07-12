@@ -8,7 +8,7 @@ Following are the specifications of life-cycle:
 1. Git workflow should be implemented. Since the company follows monolithic architecture of Development you need to take care of version control. The release should happen only on 25th of every month. 
 2. Code build should be triggered once the commits are made in the master Branch. 
 3. The code should be containerized with the help of the Docker file, The Dockerfile should be built every time if there is a push to Git-Hub. Create a custom Docker image using a Dockerfile. 
-4. As per the requirement in the production server, you need to use the Kubernetes cluster and the containerized code from Docker hub should be deployed with 2 replicas. Create a NodePort service and configure the same for port 30008. www.intellipaat.com www.intellipaat.com 
+4. As per the requirement in the production server, you need to use the Kubernetes cluster and the containerized code from Docker hub should be deployed with 2 replicas. Create a NodePort service and configure the same for port 30008.  
 5. Create a Jenkins pipeline script to accomplish the above task. 
 6. For configuration management of the infrastructure, you need to deploy the configuration on the servers to install necessary software and configurations. 
 7. Using Terraform accomplish the task of infrastructure creation in the AWS cloud provider. 
