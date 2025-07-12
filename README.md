@@ -65,6 +65,8 @@ Create the access keys -> open AWS console-> IAM
 
 <img width="378" height="21" alt="image" src="https://github.com/user-attachments/assets/4e0a3a5d-eeb5-4229-bbe2-b201a271b4de" />
 
+
+<pre>
 provider "aws" {
  region = "us-east-1"
  access_key = "AKIAUYIFYE3ACB3UJFGI"
@@ -94,6 +96,7 @@ resource "aws_instance" "k8s-slave2" {
         Name = "Machine-4"
         }
 }
+</pre>
 
 Run the following commands from Machine-1
 
