@@ -198,20 +198,14 @@ resource "aws_instance" "k8s-slave2" {
 <img width="409" height="24" alt="image" src="https://github.com/user-attachments/assets/9f234462-989e-42f2-8711-5a07a74b7e0a" />
 
 <pre>
-
 sudo apt update
-
 sudo apt install openjdk-11-jdk -y
-
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-  
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
-  
 sudo apt-get update
-
 sudo apt-get install jenkins -y
 </pre>
 
@@ -226,25 +220,15 @@ sudo apt-get install jenkins -y
 
 <pre> 
 sudo apt update
-
 sudo apt install openjdk-11-jdk -y
-
 sudo apt install docker.io -y
-
 sudo apt update
-
 sudo apt upgrade -y
-
 sudo apt install -y curl apt-transport-https ca-certificates software-properties-common
-
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-
 sudo add-apt-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-
 sudo swapoff -a
-
 sudo apt update
-
 sudo apt install -y kubelet kubeadm kubectl
 </pre>
 
@@ -258,25 +242,15 @@ sudo apt install -y kubelet kubeadm kubectl
 
 <pre> 
 sudo apt update
-
 sudo apt install docker.io -y
-
 sudo apt update
-
 sudo apt upgrade -y
-
 sudo apt install -y curl apt-transport-https ca-certificates software-properties-common
-
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-
 sudo add-apt-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-
 sudo swapoff -a
-
 sudo apt update
-
 sudo apt install -y kubelet kubeadm kubectl
-
 </pre>
 
 
@@ -338,6 +312,503 @@ sudo apt install -y kubelet kubeadm kubectl
 
  
 **Also run the below commnds**
+
+<img width="602" height="141" alt="image" src="https://github.com/user-attachments/assets/3d449544-6068-4e66-81d6-57123395ede2" />
+
+**Run the copied token in k8s-slave1**
+
+<img width="602" height="131" alt="image" src="https://github.com/user-attachments/assets/2a1ea71e-89dc-489b-94d4-b40ff0efc3d8" />
+
+**Run the copied token in k8s-slave2**
+
+<img width="602" height="140" alt="image" src="https://github.com/user-attachments/assets/b2d8291c-d934-47d4-af82-de7a48184412" />
+
+**All the three nodes configured successfully**
+
+<img width="602" height="77" alt="image" src="https://github.com/user-attachments/assets/2e8f1368-9148-4e7f-90b7-5521b8aad29c" />
+
+
+**Step:7 Configure Jenkins dashboard in Machine-1**
+
+**Jenkins installed successfully**
+
+<img width="601" height="189" alt="image" src="https://github.com/user-attachments/assets/59c7575f-c087-43ac-acc0-274ac0641557" />
+
+**Run command ->sudo cat /var/lib/jenkins/secrets/initialAdminPassword and copy the password**
+
+<img width="602" height="53" alt="image" src="https://github.com/user-attachments/assets/2e633586-98d9-4659-a1ec-d127a7a25a19" />
+
+**Paste the password and click Continue**
+
+<img width="602" height="292" alt="image" src="https://github.com/user-attachments/assets/e156c432-a4c7-49a7-b88f-106688d5d01e" />
+
+**Click on Install suggested plugins**
+
+<img width="602" height="309" alt="image" src="https://github.com/user-attachments/assets/c3d8d6a7-8cd7-4311-98e6-8d77325849c4" />
+
+<img width="602" height="300" alt="image" src="https://github.com/user-attachments/assets/9cfcec56-f2e5-48ce-9a1a-2e0454db9a42" />
+
+**Enter the required information to create a admin user and click on save and continue**
+
+<img width="602" height="236" alt="image" src="https://github.com/user-attachments/assets/2a0acb59-d55b-4df6-b028-c97e8848c951" />
+
+<img width="602" height="254" alt="image" src="https://github.com/user-attachments/assets/5ec9e440-0b00-478e-beff-2672f34097aa" />
+
+<img width="602" height="171" alt="image" src="https://github.com/user-attachments/assets/ecb086f4-730c-4b18-8536-3449e6f82097" />
+
+**Jenkins Dashboard Configured successfully**
+
+<img width="602" height="172" alt="image" src="https://github.com/user-attachments/assets/5058f5e6-26be-42b7-bc0a-4f0597b70fbb" />
+
+
+**Step:7 Add k8s-master as jenkins node**
+
+**Open manage jenkins and click on Nodes**
+
+<img width="602" height="149" alt="image" src="https://github.com/user-attachments/assets/825ecc80-c44a-4941-ad3a-3561027de3dc" />
+
+**Click on New Node**
+
+<img width="602" height="159" alt="image" src="https://github.com/user-attachments/assets/eb8c083f-2998-409f-8c00-6199a919d2e0" />
+
+**Enter node name and select Permanent agent and Click Create**
+
+<img width="602" height="194" alt="image" src="https://github.com/user-attachments/assets/0d694a1a-98f7-405c-9216-14c964a034a9" />
+
+**Enter the Remote root dirctory(/home/ubuntu/jenkins)**
+
+<img width="602" height="214" alt="image" src="https://github.com/user-attachments/assets/2c0f17d6-8ea4-4a33-86da-274a6ff8f5d5" />
+
+
+**Select Launch method-> Launch agents via ssh**
+
+**Host-> Copy the private IP of the jenkins master machine(Machine-1)**
+
+**Click on Add to add Credentials**
+
+<img width="602" height="237" alt="image" src="https://github.com/user-attachments/assets/e7d21345-3e80-4c7c-83d7-bd94f68957af" />
+
+**Copy the id_rsa (private key)**
+
+<img width="569" height="249" alt="image" src="https://github.com/user-attachments/assets/bcdb1451-398f-4be4-8ea2-9ed3a29edce4" />
+
+**Kind-> SSH Username with private key**
+
+**Username-> ubuntu**
+
+**Private ket-> Enter directly(Paste the copied key)**
+
+**Click on add**
+
+<img width="602" height="214" alt="image" src="https://github.com/user-attachments/assets/083d0110-1cab-45cb-88a3-37623d667f8d" />
+
+<img width="602" height="188" alt="image" src="https://github.com/user-attachments/assets/587b7599-19b9-4737-87a3-7b6446dbf36b" />
+
+<img width="602" height="81" alt="image" src="https://github.com/user-attachments/assets/a55bbcfa-7451-4e01-9f4b-e54c3f147b5e" />
+
+**Select the Credential created**
+
+**Select Host key verification strategy-> Non verifying verification Strategy and Click Save**
+
+<img width="602" height="179" alt="image" src="https://github.com/user-attachments/assets/b7ebac9f-e0e3-49bf-9416-b819439f4285" />
+
+<img width="602" height="211" alt="image" src="https://github.com/user-attachments/assets/89568dd5-0385-4138-813d-82f8b3fdc39f" />
+
+**Node Added successfully**
+
+<img width="602" height="108" alt="image" src="https://github.com/user-attachments/assets/14870b58-0674-499c-87e7-097d49cb64a6" />
+
+
+**Step:8 Add Jenkins credentials for Docker hub**
+
+**Open manage Jenkins and Click on Credentials**
+
+<img width="602" height="211" alt="image" src="https://github.com/user-attachments/assets/bd02ffa3-d5ab-46a7-ab6e-2735f53da1eb" />
+
+**Click on Global**
+
+<img width="602" height="189" alt="image" src="https://github.com/user-attachments/assets/0fd416d8-6876-499e-9a21-008de14c08db" />
+
+**Click Add Credentials**
+
+<img width="602" height="120" alt="image" src="https://github.com/user-attachments/assets/3471297d-6b41-4418-9ac4-6ddd5a16ff00" />
+
+**Enter your Docker Hub account Username and Password**
+
+<img width="602" height="264" alt="image" src="https://github.com/user-attachments/assets/2380c503-722e-44eb-a3ac-75cdca488283" />
+
+**Credentials added successfully**
+
+<img width="602" height="121" alt="image" src="https://github.com/user-attachments/assets/765c0903-53e9-4ce4-9936-c31c86e3e817" />
+
+
+**Step:9 Fork the https://github.com/hshar/website.git to your local account**
+
+**Open the link https://github.com/hshar/website.git**
+
+**Click on Fork**
+
+<img width="602" height="204" alt="image" src="https://github.com/user-attachments/assets/3c7b1381-1f21-47e3-b68d-977e0a71cf27" />
+
+**Click on Create Fork**
+
+<img width="602" height="424" alt="image" src="https://github.com/user-attachments/assets/490f3ec7-d211-409d-9b16-842e5e4c7069" />
+
+
+**Step:10 Create a Dockerfile in the Repository ‘website’**
+
+**Open the Github account and open Respository ‘website’**
+
+**Click on Add File-> Create New File**
+
+<img width="602" height="255" alt="image" src="https://github.com/user-attachments/assets/ff6b13b6-a392-4412-a8db-8a67a26996ca" />
+
+<img width="602" height="128" alt="image" src="https://github.com/user-attachments/assets/845b2fd6-f337-4f54-933e-0eabeb2493f3" />
+
+ <img width="465" height="366" alt="image" src="https://github.com/user-attachments/assets/01990b88-b0e8-4f13-95ad-e4ce5f378276" />
+
+
+
+**Step:11 Create a jenkins pipeline to print hello**
+
+**Open the jenkins dashboard and Click on New item**
+
+<img width="602" height="177" alt="image" src="https://github.com/user-attachments/assets/3117f3f9-9d86-419e-bebc-6caacb4c28ab" />
+
+**Enter an item name and select Pipeline and Click ok**
+
+<img width="602" height="363" alt="image" src="https://github.com/user-attachments/assets/d69f74fc-6312-436d-9a0f-01cdbb0d8aa3" />
+
+<img width="602" height="363" alt="image" src="https://github.com/user-attachments/assets/12108dc1-ad7b-4ab0-8f73-c62dfbfa2c33" />
+
+**Move down to script and select try sample pipeline-> Hello world**
+
+<img width="602" height="281" alt="image" src="https://github.com/user-attachments/assets/ad4e36c2-7eb9-42b6-9d58-938424fc8638" />
+
+**Copy the Credential id created for dockerhub**
+
+<img width="602" height="122" alt="image" src="https://github.com/user-attachments/assets/ba67b443-4d1d-4451-adbb-cc3ed905637b" />
+
+**Make the below changes in the Script and save the changes**
+
+<pre>
+ pipeline {
+    agent none
+    environment{
+        DOCKERHUB_CREDENTIALS= credentials('c108847f-fa55-4d24-b84e-f4e1acf4c1a5')
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+</pre>
+
+
+<img width="602" height="130" alt="image" src="https://github.com/user-attachments/assets/1163d9fc-4eca-4efc-9e86-32c965678b21" />
+
+**Click on Build Now**
+
+
+<img width="537" height="214" alt="image" src="https://github.com/user-attachments/assets/3f380ade-dd2f-45f1-b420-0606fd5c98ef" />
+
+
+
+**Step:12 update the jenkins pipeline to copy the files from github to the K8s-master machine**
+
+**Copy the url of the github respository ‘website’**
+
+
+<img width="602" height="218" alt="image" src="https://github.com/user-attachments/assets/522e41c5-1536-429e-9ec4-64fbf97ea5c0" />
+
+**Make the below changes to the pipleline script and save it**
+
+<pre>
+     stage('Git') {
+            agent {
+                label 'K8s-master'     
+            }
+            steps {
+                git 'https://github.com/Sivakami-vinoth/website.git'
+            }
+        }
+</pre>
+
+
+
+<img width="602" height="272" alt="image" src="https://github.com/user-attachments/assets/c0d9e758-109b-4e9d-9eda-fda3792d4647" />
+
+**Click on Build now**
+
+
+<img width="601" height="295" alt="image" src="https://github.com/user-attachments/assets/26c20eae-4865-4272-9449-485f0c6c0ee7" />
+
+**Now files are copied from git hub respository to k8s-master machine**
+
+
+<img width="524" height="255" alt="image" src="https://github.com/user-attachments/assets/9bda863c-e1f9-4708-9c8b-2710f43748aa" />
+
+
+**Step:13 update the jenkins pipeline to build and push the images to DockerHub**
+
+**Update the pipeline script and save it**
+
+<pre>
+ stage('Docker') {
+            agent {
+                label 'K8s-master'     
+            }
+            steps {
+                sh 'sudo docker build /home/ubuntu/jenkins/workspace/mypipeline -t sivakamivinoth/project2'
+                sh 'sudo echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'sudo docker push sivakamivinoth/project2'
+            }
+        }
+</pre>
+
+
+
+<img width="602" height="241" alt="image" src="https://github.com/user-attachments/assets/6bd9a41f-860d-4915-b37c-2c2a50dd8586" />
+
+
+<img width="602" height="332" alt="image" src="https://github.com/user-attachments/assets/934766fe-7794-44dd-8b93-7021dc38eae9" />
+
+
+**Image have been pushed to the dockerhub account**
+
+
+<img width="602" height="169" alt="image" src="https://github.com/user-attachments/assets/bce65979-ce1c-43c9-9eaf-135a58c90795" />
+
+
+<img width="602" height="211" alt="image" src="https://github.com/user-attachments/assets/1e498087-761f-40d9-b8b6-082ae0005da0" />
+
+
+
+**Step:14 update the jenkins pipeline to create kubernetes deployment and service**
+
+**Create a new file deployment.yaml in the github repository**
+
+
+<img width="602" height="260" alt="image" src="https://github.com/user-attachments/assets/9b1dce9e-0ad9-4c7d-8e7a-eafb9e13a941" />
+
+<pre>
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: sivakamivinoth/project2:latest
+        ports:
+        - containerPort: 80
+</pre>
+
+
+
+<img width="602" height="264" alt="image" src="https://github.com/user-attachments/assets/df583461-1b3b-4702-b360-1fd9ca2672fb" />
+
+**Click on Commit changes**
+
+
+<img width="475" height="371" alt="image" src="https://github.com/user-attachments/assets/57eb3518-357e-4322-a5b4-2944b3c9a07f" />
+
+**File deployment.yaml created successfully**
+
+
+<img width="602" height="194" alt="image" src="https://github.com/user-attachments/assets/c61c9787-cb77-4336-8a6c-0d8acbdfed39" />
+
+**Create a new file service.yaml**
+
+<pre>
+ apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30008
+</pre>
+
+
+<img width="602" height="211" alt="image" src="https://github.com/user-attachments/assets/be6bea72-dc70-48cf-839f-571bf9254a04" />
+
+**Click on Commit Changes**
+
+
+<img width="471" height="246" alt="image" src="https://github.com/user-attachments/assets/688e74f0-836f-478d-ae4d-f1a868e2ae50" />
+
+**File service.yaml file created successfully**
+
+
+<img width="602" height="265" alt="image" src="https://github.com/user-attachments/assets/f7a2496d-e01f-4418-8ade-2e825c74d023" />
+
+**Update the pipeling script with below code**
+
+<pre>
+ stage('Kubernetes') {
+            agent {
+                label 'K8s-master'     
+            }
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+            }
+        }
+</pre>
+
+
+<img width="602" height="282" alt="image" src="https://github.com/user-attachments/assets/152623ce-6695-42f1-9170-f5b6a8e0bd7d" />
+
+**Click on Build now**
+
+
+<img width="602" height="334" alt="image" src="https://github.com/user-attachments/assets/64c58fce-63ba-43af-bb1c-e92bf1b1a610" />
+
+**Application deployed on Kubernetes slave1 and slave2 successfully**
+
+
+<img width="602" height="234" alt="image" src="https://github.com/user-attachments/assets/3a5f9524-f216-4078-a5eb-ee427049ae02" />
+
+
+<img width="602" height="313" alt="image" src="https://github.com/user-attachments/assets/c16ac3d1-e5dd-43b8-948c-a310b034cf4e" />
+
+
+
+**Step:15 Make changes to the pipeline to get triggered once any changes made in the master branch**
+
+**Open the pipeline configuration and enable “GitHub hook trigger for GITScm polling and save it**
+
+
+<img width="602" height="287" alt="image" src="https://github.com/user-attachments/assets/cbf3285c-d4a8-4206-884e-71f69582caf7" />
+
+
+**Open github settings  and create Webhook**
+
+
+<img width="602" height="203" alt="image" src="https://github.com/user-attachments/assets/c0ada491-0ea0-4d4e-a2c2-d7d1cad80509" />
+
+
+<img width="602" height="376" alt="image" src="https://github.com/user-attachments/assets/dd4c2704-88f9-4dea-835b-a991c4f2b0e4" />
+
+
+**Webhook created successfully**
+
+
+<img width="602" height="119" alt="image" src="https://github.com/user-attachments/assets/ffcca7e6-8e9f-4884-b933-4811588f9423" />
+
+
+**Update the pipeling script as below**
+
+<pre>
+ steps {
+                sh 'kubectl delete deploy nginx-deployment'
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+            }
+</pre>
+
+
+<img width="602" height="264" alt="image" src="https://github.com/user-attachments/assets/69f57952-e17c-4358-9f3f-5572defad1d7" />
+
+
+**Modify the index.html file in Master branch and commit changes**
+
+
+<img width="602" height="161" alt="image" src="https://github.com/user-attachments/assets/368f07be-efa2-4e94-8e15-e3a59be08db6" />
+
+
+<img width="371" height="395" alt="image" src="https://github.com/user-attachments/assets/791adc4f-6a85-4b15-9c92-3d8def877a76" />
+
+
+**Pipeline triggered automatically**
+
+<img width="602" height="286" alt="image" src="https://github.com/user-attachments/assets/94d37c8f-d2bb-4e41-8228-11c621362dab" />
+
+
+**Kubernetes Slaves got updated with the new changes**
+
+
+<img width="602" height="344" alt="image" src="https://github.com/user-attachments/assets/b38674c2-93bc-4dae-86d8-56c3d4bab54d" />
+
+
+<img width="602" height="452" alt="image" src="https://github.com/user-attachments/assets/ed99cb2a-c2c1-4d64-9f78-ebeecde6abaf" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
