@@ -114,7 +114,7 @@ resource "aws_instance" "k8s-slave2" {
 
  <img width="602" height="165" alt="image" src="https://github.com/user-attachments/assets/a5f6ea1b-6029-4fb5-bffe-f01ab6b13a65" />
 
-** Run ->terraform apply**
+**Run ->terraform apply**
  
  <img width="602" height="55" alt="image" src="https://github.com/user-attachments/assets/374a3b6d-857a-457d-a578-abace2b03780" />
 
