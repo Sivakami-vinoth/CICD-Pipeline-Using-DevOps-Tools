@@ -587,7 +587,7 @@ sudo apt install -y kubelet kubeadm kubectl
 
 
 
-## **Step:15 update the jenkins pipeline to create kubernetes deployment and service**
+## **Step:16 update the jenkins pipeline to create kubernetes deployment and service**
 
 **Create a new file deployment.yaml in the github repository**
 
@@ -694,7 +694,7 @@ spec:
 
 
 
-## **Step:16 Make changes to the pipeline to get triggered once any changes made in the master branch**
+## **Step:17 Make changes to the pipeline to get triggered once any changes made in the master branch**
 
 **Open the pipeline configuration and enable “GitHub hook trigger for GITScm polling and save it**
 
