@@ -1,10 +1,12 @@
 # CI/CD-Pipeline-Using-DevOps-Tools
-**Created a Complete CI/CD Pipeline from Development to Testing to Production using DevOps Tools**
+## **Created a Complete CI/CD Pipeline from Development to Testing to Production using DevOps Tools**
 
 You are hired as a DevOps engineer for Analytics Pvt Ltd. This company is a product based organization which uses Docker for their containerization needs within the company. The final product received a lot of traction in the first few weeks of launch. Now with the increasing demand, the organization needs to have a platform for automating deployment, scaling, and operations of application containers across clusters of hosts, As a DevOps engineer, you need implement a DevOps life cycle, such that all the requirements are implemented without any change in the Docker containers in the testing environment. 
 Up until now, this organization used to follow a monolithic architecture with just 2 developers. 
 The product is present on https://github.com/hshar/website.git 
+
 Following are the specifications of life-cycle: 
+
 1. Git workflow should be implemented. Since the company follows monolithic architecture of Development you need to take care of version control. The release should happen only on 25th of every month. 
 2. Code build should be triggered once the commits are made in the master Branch. 
 3. The code should be containerized with the help of the Docker file, The Dockerfile should be built every time if there is a push to Git-Hub. Create a custom Docker image using a Dockerfile. 
@@ -24,7 +26,7 @@ Worker4: Docker, Kubernetes
 
 ______________________________________________________________________________________________________________________________________________________________
 
-**Step:1 Create an EC2 Instances Machine-1 manually**
+## **Step:1 Create an EC2 Instances Machine-1 manually**
 
 Machine-1: OS-> ubuntu, Instance type-> t2.medium
 
@@ -34,7 +36,7 @@ Machine-1: OS-> ubuntu, Instance type-> t2.medium
 
 <img width="602" height="258" alt="image" src="https://github.com/user-attachments/assets/cabfe2d6-c30c-4cd9-9333-4cc408a3bcd9" />
 
-**Step:2 Intsall Terrform in Machine-1**
+## **Step:2 Intsall Terrform in Machine-1**
 
 Open the link -> Install | Terraform | HashiCorp Developer
 
@@ -56,7 +58,7 @@ sudo apt update && sudo apt install terraform
 <img width="407" height="53" alt="image" src="https://github.com/user-attachments/assets/dbe4417d-8276-4ff5-aaa9-4c35e522c5ac" />
 
 
-**Step:3 Create main.tf file (To create machines kubernetes master, slave1 and slave2)**
+## **Step:3 Create main.tf file (To create machines kubernetes master, slave1 and slave2)**
 
 Create the access keys -> open AWS console-> IAM
 (Copy the access key and secret key)
@@ -130,7 +132,7 @@ resource "aws_instance" "k8s-slave2" {
  <img width="602" height="101" alt="image" src="https://github.com/user-attachments/assets/7e77067f-af14-4724-a9eb-3063b6b239e5" />
 
 
-**Step:4 Intsall Ansible in Machine-1**
+## **Step:4 Intsall Ansible in Machine-1**
 
 **Open the link-> Installing Ansible on specific operating systems — Ansible Documentation**
 
@@ -184,7 +186,7 @@ resource "aws_instance" "k8s-slave2" {
 <img width="563" height="359" alt="image" src="https://github.com/user-attachments/assets/371a8147-5f38-41d0-9a61-685e78845a94" />
 
 
-**Step:5 Create script files to install java, docker, kubernetes and jenkins**
+## **Step:5 Create script files to install java, docker, kubernetes and jenkins**
 
 **Create file script1.sh to install java and jenkins im Machine-1**
 
@@ -256,7 +258,7 @@ sudo apt install -y kubelet kubeadm kubectl
 
 <img width="602" height="143" alt="image" src="https://github.com/user-attachments/assets/052e7506-9fee-4f72-8646-8a75c76ac6be" />
 
-**Step:6 Create playbook playbook1.yaml**
+## **Step:6 Create playbook playbook1.yaml**
 
 
 <img width="442" height="25" alt="image" src="https://github.com/user-attachments/assets/c4801830-1fe7-436b-bbd0-4590927d2053" />
@@ -300,7 +302,7 @@ sudo apt install -y kubelet kubeadm kubectl
 <img width="602" height="335" alt="image" src="https://github.com/user-attachments/assets/14c976e2-2c70-4862-b16f-ab96cd753e27" />
 
 
-**Step:7 Initialize the kubeadm cluster in k8s-master machine**
+## **Step:7 Initialize the kubeadm cluster in k8s-master machine**
 
 **Run command -> kubeadm init**
 
@@ -328,7 +330,7 @@ sudo apt install -y kubelet kubeadm kubectl
 <img width="602" height="77" alt="image" src="https://github.com/user-attachments/assets/2e8f1368-9148-4e7f-90b7-5521b8aad29c" />
 
 
-**Step:7 Configure Jenkins dashboard in Machine-1**
+## **Step:8 Configure Jenkins dashboard in Machine-1**
 
 **Jenkins installed successfully**
 
@@ -361,7 +363,7 @@ sudo apt install -y kubelet kubeadm kubectl
 <img width="602" height="172" alt="image" src="https://github.com/user-attachments/assets/5058f5e6-26be-42b7-bc0a-4f0597b70fbb" />
 
 
-**Step:7 Add k8s-master as jenkins node**
+## **Step:9 Add k8s-master as jenkins node**
 
 **Open manage jenkins and click on Nodes**
 
@@ -419,7 +421,7 @@ sudo apt install -y kubelet kubeadm kubectl
 <img width="602" height="108" alt="image" src="https://github.com/user-attachments/assets/14870b58-0674-499c-87e7-097d49cb64a6" />
 
 
-**Step:8 Add Jenkins credentials for Docker hub**
+## **Step:10 Add Jenkins credentials for Docker hub**
 
 **Open manage Jenkins and Click on Credentials**
 
@@ -442,7 +444,7 @@ sudo apt install -y kubelet kubeadm kubectl
 <img width="602" height="121" alt="image" src="https://github.com/user-attachments/assets/765c0903-53e9-4ce4-9936-c31c86e3e817" />
 
 
-**Step:9 Fork the https://github.com/hshar/website.git to your local account**
+## **Step:11 Fork the https://github.com/hshar/website.git to your local account**
 
 **Open the link https://github.com/hshar/website.git**
 
@@ -455,7 +457,7 @@ sudo apt install -y kubelet kubeadm kubectl
 <img width="602" height="424" alt="image" src="https://github.com/user-attachments/assets/490f3ec7-d211-409d-9b16-842e5e4c7069" />
 
 
-**Step:10 Create a Dockerfile in the Repository ‘website’**
+## **Step:12 Create a Dockerfile in the Repository ‘website’**
 
 **Open the Github account and open Respository ‘website’**
 
@@ -469,7 +471,7 @@ sudo apt install -y kubelet kubeadm kubectl
 
 
 
-**Step:11 Create a jenkins pipeline to print hello**
+## **Step:13 Create a jenkins pipeline to print hello**
 
 **Open the jenkins dashboard and Click on New item**
 
@@ -515,7 +517,7 @@ sudo apt install -y kubelet kubeadm kubectl
 
 
 
-**Step:12 update the jenkins pipeline to copy the files from github to the K8s-master machine**
+## **Step:14 update the jenkins pipeline to copy the files from github to the K8s-master machine**
 
 **Copy the url of the github respository ‘website’**
 
@@ -550,7 +552,7 @@ sudo apt install -y kubelet kubeadm kubectl
 <img width="524" height="255" alt="image" src="https://github.com/user-attachments/assets/9bda863c-e1f9-4708-9c8b-2710f43748aa" />
 
 
-**Step:13 update the jenkins pipeline to build and push the images to DockerHub**
+## **Step:15 update the jenkins pipeline to build and push the images to DockerHub**
 
 **Update the pipeline script and save it**
 
@@ -585,7 +587,7 @@ sudo apt install -y kubelet kubeadm kubectl
 
 
 
-**Step:14 update the jenkins pipeline to create kubernetes deployment and service**
+## **Step:15 update the jenkins pipeline to create kubernetes deployment and service**
 
 **Create a new file deployment.yaml in the github repository**
 
@@ -692,7 +694,7 @@ spec:
 
 
 
-**Step:15 Make changes to the pipeline to get triggered once any changes made in the master branch**
+## **Step:16 Make changes to the pipeline to get triggered once any changes made in the master branch**
 
 **Open the pipeline configuration and enable “GitHub hook trigger for GITScm polling and save it**
 
